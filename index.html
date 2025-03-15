@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG Mortar Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="map-selector">
+            <div class="app-header">
+                <div class="app-logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                </div>
+                <h1>PUBG Mortar</h1>
+            </div>
+            <h2>Select Map</h2>
+            <ul id="map-list">
+                <li data-map="erangel" data-scale="1000">Erangel</li>
+                <li data-map="miramar" data-scale="1000">Miramar</li>
+                <li data-map="sanhok" data-scale="400">Sanhok</li>
+                <li data-map="vikendi" data-scale="800">Vikendi</li>
+                <li data-map="karakin" data-scale="200">Karakin</li>
+                <li data-map="paramo" data-scale="300">Paramo</li>
+                <li data-map="haven" data-scale="150">Haven</li>
+                <li data-map="taego" data-scale="1000">Taego</li>
+                <li data-map="deston" data-scale="1000">Deston</li>
+            </ul>
+            <div class="app-footer">
+                <p>Click on the map to mark your position,<br>then click again to mark your target.</p>
+            </div>
+        </div>
+        <div class="map-container">
+            <div id="map-wrapper">
+                <div class="zoom-controls">
+                    <button id="zoom-in" class="zoom-btn" title="Zoom In">+</button>
+                    <button id="zoom-out" class="zoom-btn" title="Zoom Out">−</button>
+                    <button id="zoom-reset" class="zoom-btn" title="Reset Zoom">↺</button>
+                </div>
+                <div id="map-viewport">
+                    <div id="map-content">
+                        <div id="map-container">
+                            <img id="map-image" src="" alt="PUBG Map">
+                            <div id="markers"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="instructions" id="instructions">
+                Select a map to begin
+            </div>
+            <div class="results" id="results">
+                <div id="distance"></div>
+                <div id="map-info"></div>
+                <button id="reset-btn">Reset</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
