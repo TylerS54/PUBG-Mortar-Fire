@@ -1,4 +1,5 @@
-// Simplified mortar calculator without plane path logic
+// Core logic for the interactive PUBG mortar calculator
+// Handles map selection, zooming and distance calculations
 
 document.addEventListener('DOMContentLoaded', () => {
     const mapList = document.getElementById('map-list');
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxZoom = 5;
     const zoomIncrement = 0.5;
     let isDragging = false;
+    // Initialize the app and bind events
 
     function init() {
         currentZoom = 1;
@@ -42,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setupEventListeners();
         resetUI();
     }
+    // Set up mouse, keyboard and UI listeners
 
     function setupEventListeners() {
         mapList.addEventListener('click', handleMapSelection);
@@ -93,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.button === 1) e.preventDefault();
         });
     }
+    // Increase zoom level while keeping the center in view
 
     function zoomIn() {
         if (currentZoom < maxZoom) {
@@ -108,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 10);
         }
     }
+    // Decrease zoom and reset position when necessary
 
     function zoomOut() {
         if (currentZoom > minZoom) {
@@ -128,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 10);
         }
     }
+    // Restore default zoom state
 
     function resetZoom() {
         currentZoom = 1;
@@ -139,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mapImage.style.maxWidth = '100%';
         mapImage.style.maxHeight = '100%';
     }
+    // Apply the current zoom factor to the map
 
     function applyZoom() {
         mapContent.style.transform = `scale(${currentZoom})`;
@@ -150,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mapViewport.scrollTop = 0;
         }
     }
+    // Change the displayed map when the user selects a new one
 
     function handleMapSelection(e) {
         if (e.target.tagName === 'LI') {
@@ -159,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loadMap(mapId);
         }
     }
+    // Load the chosen map image and reset UI elements
 
     function loadMap(mapId) {
         currentMap = maps[mapId];
@@ -178,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         instructions.textContent = 'Click on the map to set your position';
         distanceEl.style.display = 'flex';
     }
+    // Record player and target positions on map clicks
 
     function handleMapClick(e) {
         if (isDragging || !currentMap) return;
@@ -200,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
             instructions.textContent = 'Distance calculated. Use the reset button to start over.';
         }
     }
+    // Add a marker element to visualize positions
 
     function createMarker(x, y, type) {
         const marker = document.createElement('div');
@@ -210,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         marker.style.transform = 'translate(-50%, -50%)';
         markers.appendChild(marker);
     }
+    // Draw a line between player and target markers
 
     function createLine(from, to) {
         if (line) line.remove();
@@ -239,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         markers.appendChild(lineContainer);
         line = lineContainer;
     }
+    // Convert pixel distance to in-game meters
 
     function calculateDistance() {
         if (!playerPosition || !targetPosition || !currentMap) return;
@@ -253,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formatted = gameDistance >= 1000 ? `${(gameDistance/1000).toFixed(2)} km` : `${gameDistance} meters`;
         distanceEl.innerHTML = `<div class="distance-value">${formatted}</div><div class="distance-label">Mortar Distance</div>`;
     }
+    // Return the size of each map in meters
 
     function getMapSizeInMeters(name) {
         const mapSizes = {
@@ -268,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         return mapSizes[name] || 8000;
     }
+    // Clear markers and distance information
 
     function resetPositions() {
         playerPosition = null;
@@ -281,6 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
             instructions.textContent = 'Select a map to begin';
         }
     }
+    // Reset the entire interface to its initial state
 
     function resetUI() {
         currentMap = null;
