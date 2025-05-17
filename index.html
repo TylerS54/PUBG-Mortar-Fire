@@ -27,13 +27,6 @@
                 <li data-map="taego" data-scale="1000">Taego</li>
                 <li data-map="deston" data-scale="1000">Deston</li>
             </ul>
-            <div class="mode-selector">
-                <h3>Mode</h3>
-                <div class="mode-options">
-                    <button id="mortar-mode" class="mode-btn active">Mortar Calculator</button>
-                    <button id="plane-mode" class="mode-btn">Plane Path</button>
-                </div>
-            </div>
             <div class="app-footer">
                 <p id="mode-instructions">Click on the map to mark your position,<br>then click again to mark your target.</p>
             </div>
@@ -50,7 +43,6 @@
                         <div id="map-container">
                             <img id="map-image" src="" alt="PUBG Map">
                             <div id="markers"></div>
-                            <div id="plane-path" class="plane-path"></div>
                         </div>
                     </div>
                 </div>
@@ -60,30 +52,6 @@
             </div>
             <div class="results" id="results">
                 <div id="distance"></div>
-                <div id="jump-details">
-                    <div id="jump-info" class="jump-info">
-                        <div class="jump-strategy">
-                            <label>Fall style:</label>
-                            <select id="fall-strategy">
-                                <option value="glide">Glide (45° angle, max distance)</option>
-                                <option value="neutral">Forward (W key only)</option>
-                                <option value="dive">Dive (W + looking down)</option>
-                            </select>
-                        </div>
-                        <div class="jump-distance">
-                            <span>Distance from path:</span>
-                            <span class="jump-value" id="jump-distance-value">-</span>
-                        </div>
-                        <div class="jump-exit">
-                            <span>Jump out at:</span>
-                            <span class="jump-value" id="jump-exit-value">-</span>
-                        </div>
-                        <div class="jump-height">
-                            <span>Pull chute at:</span>
-                            <span class="jump-value" id="jump-height-value">-</span>
-                        </div>
-                    </div>
-                </div>
                 <div id="map-info"></div>
                 <button id="reset-btn">Reset</button>
             </div>
