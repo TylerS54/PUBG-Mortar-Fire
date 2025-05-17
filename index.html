@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- PUBG Mortar Calculator main page -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,9 @@
     <title>PUBG Mortar Calculator</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+<!-- Main application layout -->
 <body>
+<!-- Sidebar for selecting maps -->
     <div class="container">
         <div class="map-selector">
             <div class="app-header">
@@ -32,8 +35,11 @@
             </div>
         </div>
         <div class="map-container">
+        <!-- Map display with zoom controls -->
             <div id="map-wrapper">
+                <!-- Container holding the map image and markers -->
                 <div class="zoom-controls">
+                    <!-- Buttons to adjust map zoom -->
                     <button id="zoom-in" class="zoom-btn" title="Zoom In">+</button>
                     <button id="zoom-out" class="zoom-btn" title="Zoom Out">−</button>
                     <button id="zoom-reset" class="zoom-btn" title="Reset Zoom">↺</button>
@@ -47,6 +53,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Displays instructions or results for the user -->
             <div class="instructions" id="instructions">
                 Select a map to begin
             </div>

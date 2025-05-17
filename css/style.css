@@ -1,3 +1,4 @@
+/* Styles for the PUBG Mortar Calculator interface */
 * {
     margin: 0;
     padding: 0;
@@ -28,12 +29,14 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
+/* Overall layout container */
 
 .container {
     display: flex;
     width: 100%;
     height: 100vh;
 }
+/* Sidebar containing map choices */
 
 .map-selector {
     width: 220px;
@@ -81,6 +84,7 @@ body {
     color: #fff;
     box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
 }
+/* Area where the selected map is displayed */
 
 .map-container {
     flex: 1;
@@ -126,6 +130,7 @@ body {
     max-height: 100%;
     filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.6)); /* Add shadow to the map */
 }
+/* Floating controls for zooming the map */
 
 .zoom-controls {
     position: absolute;
@@ -182,6 +187,7 @@ body {
     pointer-events: none;
     z-index: 5;
 }
+/* Visual markers for player and target */
 
 .marker {
     position: absolute;
@@ -254,6 +260,7 @@ body {
         box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
     }
 }
+/* Instruction banner shown above results */
 
 .instructions {
     padding: 15px;
@@ -266,6 +273,7 @@ body {
     z-index: 20;
     position: relative;
 }
+/* Container showing distance and reset button */
 
 .results {
     display: flex;
@@ -382,6 +390,7 @@ body {
     color: var(--text-secondary);
     line-height: 1.6;
 }
+/* Animated line connecting player and target */
 
 .line-container {
     position: absolute;
@@ -445,6 +454,7 @@ body {
     }
 }
 
+/* Optional style hooks for future modes */
 /* Mode Selector Styles */
 .mode-selector {
     margin-top: 20px;
@@ -467,6 +477,7 @@ body {
     gap: 10px;
     margin-bottom: 15px;
 }
+/* Buttons used within the mode selector */
 
 .mode-btn {
     padding: 10px;
