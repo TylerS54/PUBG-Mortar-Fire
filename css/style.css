@@ -6,23 +6,24 @@
 }
 
 :root {
-    --bg-dark: #121212;
-    --bg-medium: #1e1e1e;
-    --bg-light: #272727;
-    --accent: #4CAF50;
-    --accent-hover: #388E3C;
-    --accent2: #FF5722;
-    --accent2-hover: #E64A19;
-    --text: #FFFFFF;
-    --text-secondary: #B0B0B0;
-    --border-radius: 10px;
+    --bg-dark: #0d0f12;
+    --bg-medium: rgba(255, 255, 255, 0.05);
+    --bg-light: rgba(255, 255, 255, 0.08);
+    --accent: #00e676;
+    --accent-hover: #00c853;
+    --accent2: #26c6da;
+    --accent2-hover: #00acc1;
+    --text: #f1f1f1;
+    --text-secondary: #bdbdbd;
+    --border-radius: 12px;
     --transition: all 0.3s ease;
+    --glass-blur: 12px;
 }
 
 body {
     font-family: 'Poppins', 'Segoe UI', 'Roboto', Arial, sans-serif;
     background-color: var(--bg-dark);
-    background: linear-gradient(160deg, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(160deg, #0b1014, #182028, #1f2933);
     color: var(--text);
     height: 100vh;
     overflow: hidden;
@@ -43,8 +44,8 @@ body {
 
 .map-selector {
     width: 240px;
-    background-color: rgba(30,30,30,0.85);
-    backdrop-filter: blur(6px);
+    background-color: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(var(--glass-blur));
     padding: 20px;
     overflow-y: auto;
     border-right: 1px solid #333;
@@ -143,10 +144,10 @@ body {
     z-index: 100;
     display: flex;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(20, 20, 20, 0.6);
     border-radius: var(--border-radius);
     padding: 8px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(var(--glass-blur));
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -225,7 +226,7 @@ body {
     font-weight: 600;
     white-space: nowrap;
     letter-spacing: 0.5px;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(var(--glass-blur));
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -249,7 +250,7 @@ body {
     font-weight: 600;
     white-space: nowrap;
     letter-spacing: 0.5px;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(var(--glass-blur));
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -268,7 +269,8 @@ body {
 
 .instructions {
     padding: 15px;
-    background-color: var(--bg-medium);
+    background-color: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(var(--glass-blur));
     text-align: center;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -282,8 +284,8 @@ body {
 .results {
     display: flex;
     padding: 20px;
-    background-color: rgba(30,30,30,0.85);
-    backdrop-filter: blur(6px);
+    background-color: rgba(20, 20, 20, 0.65);
+    backdrop-filter: blur(var(--glass-blur));
     align-items: center;
     justify-content: space-between;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
