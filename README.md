@@ -10,6 +10,7 @@ A web application to calculate mortar distances in PUBG (PlayerUnknown's Battleg
 - Visual indication of player position and target
 - Line drawing between positions
 - Simple and intuitive UI
+- Mobile-friendly responsive layout
 
 ## How to Use
 
