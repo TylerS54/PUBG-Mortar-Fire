@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const zoomInBtn = document.getElementById('zoom-in');
     const zoomOutBtn = document.getElementById('zoom-out');
     const zoomResetBtn = document.getElementById('zoom-reset');
+    const loadingSpinner = document.getElementById('loading-spinner');
 
     const maps = {
         erangel: { name: 'Erangel', image: 'img/erangel.png', scale: 1000 },
@@ -175,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentMap = maps[mapId];
         resetZoom();
         resetPositions();
+        if (loadingSpinner) loadingSpinner.style.display = 'block';
         mapImage.src = currentMap.image;
         mapImage.alt = `${currentMap.name} Map`;
         mapImage.onload = () => {
@@ -184,7 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const ratio = mapSize / Math.max(mapImage.naturalWidth, mapImage.naturalHeight);
                 mapInfo.textContent = `Map: ${mapImage.naturalWidth}×${mapImage.naturalHeight}px (${ratio.toFixed(2)}m/px)`;
             }
+            if (loadingSpinner) loadingSpinner.style.display = 'none';
             setTimeout(resetZoom, 50);
+        };
+        mapImage.onerror = () => {
+            if (loadingSpinner) loadingSpinner.style.display = 'none';
         };
         instructions.textContent = 'Click on the map to set your position';
         distanceEl.style.display = 'flex';
