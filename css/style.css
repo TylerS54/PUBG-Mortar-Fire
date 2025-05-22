@@ -548,12 +548,14 @@ body {
         border-bottom: 1px solid #333;
     }
     .map-container {
+
         flex: none;
         height: auto;
     }
     #map-wrapper {
         height: 60vh;
         margin: 12px 0;
+        flex: 1;
     }
     .zoom-controls {
         flex-direction: row;
