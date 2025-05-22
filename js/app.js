@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mapImage.style.cursor = 'crosshair';
         mapImage.style.maxWidth = '100%';
         mapImage.style.maxHeight = '100%';
+        updateOverlay();
     }
     // Apply the current zoom factor to the map
 
@@ -156,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mapViewport.scrollLeft = 0;
             mapViewport.scrollTop = 0;
         }
+        updateOverlay();
     }
     // Change the displayed map when the user selects a new one
 
@@ -218,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         marker.style.position = 'absolute';
         marker.style.left = `${x * 100}%`;
         marker.style.top = `${y * 100}%`;
-        marker.style.transform = 'translate(-50%, -50%)';
+        marker.style.transform = `translate(-50%, -50%) scale(${1 / currentZoom})`;
         markers.appendChild(marker);
     }
     // Draw a line between player and target markers
@@ -242,14 +244,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const dy = toYPx - fromYPx;
         const length = Math.sqrt(dx * dx + dy * dy);
         const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-        lineEl.style.width = `${length}px`;
+        lineEl.style.width = `${length / currentZoom}px`;
+        lineEl.style.transform = `scaleY(${1 / currentZoom})`;
         lineContainer.style.transform = `rotate(${angle}deg)`;
         const endpoint = document.createElement('div');
         endpoint.className = 'line-endpoint';
+        endpoint.style.transform = `translate(50%, -50%) scale(${1 / currentZoom})`;
         lineEl.appendChild(endpoint);
         lineContainer.appendChild(lineEl);
         markers.appendChild(lineContainer);
         line = lineContainer;
+    }
+
+    // Update markers and lines to keep a consistent size when zooming
+    function updateOverlay() {
+        document.querySelectorAll('.marker').forEach(marker => {
+            marker.style.transform = `translate(-50%, -50%) scale(${1 / currentZoom})`;
+        });
+        if (playerPosition && targetPosition) {
+            createLine(playerPosition, targetPosition);
+        }
     }
     // Convert pixel distance to in-game meters
 
